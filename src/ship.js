@@ -13,6 +13,13 @@ export class Ship{
         this.timesHit++;
     }
 
-
-    
+    // calculates whether a ship is considered sunk based on its length 
+    // and the number of hits it has received.
+    isSunk(){
+        if(this.timesHit === this.length){
+            return true;
+        } else {
+            return false;
+        }
+    };
 };

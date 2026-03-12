@@ -14,3 +14,17 @@ test('Increases the timesHit attribute by 1', () => {
     testShip.hit();
     expect(testShip.timesHit).toBe(1);
 })
+
+//testing if ship is sunk
+test('Ship is not sunk before hit', () => {
+    const testShip = new Ship(2);
+    expect(testShip.isSunk()).toBe(false);
+});
+
+test('Ship is sunk eventually', () => {
+    const testShip = new Ship(2);
+    testShip.hit();
+    expect(testShip.isSunk()).toBe(false);
+    testShip.hit();
+    expect(testShip.isSunk()).toBe(true);
+})

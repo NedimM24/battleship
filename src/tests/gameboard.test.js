@@ -11,11 +11,11 @@ test('Create a Gameboard obj', () => {
     ]);
 });
 
+//Testing bounds
 let newGameboard;
 beforeEach(() => {
     newGameboard = new Gameboard(4,4);
 });
-
 
 test("Vertical ship out of bounds returns false", () => {
     const testShip = new Ship(2);
@@ -35,4 +35,12 @@ test("Horizontal ship out of bounds returns false", () => {
 test("Horizontal ship in bounds returns true", () => {
     const testShip = new Ship(2);
     expect(newGameboard.placeShip(1, 1, 'horizontal', testShip)).toBe(true);
+})
+
+//Testing ship overlap
+test('If ships collide, return false', () => {
+    const testShip = new Ship(2);
+    const newShip = new Ship(2,2)
+    newGameboard.placeShip(1, 1, 'vertical', testShip);
+    expect(newGameboard.placeShip(1, 1, 'vertical', newShip)).toBe(false);
 })

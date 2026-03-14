@@ -52,3 +52,12 @@ test('Returns true if ship is placed correctly', () => {
     expect(newGameboard.board[1][1]).toBe(testShip);
     expect(newGameboard.board[2][1]).toBe(testShip);
 })
+
+//Testing to see if a ship was hit
+//If hit, times counter must increase by 1
+test('Ship was hit', () => {
+    const testShip = new Ship(2);
+    newGameboard.placeShip(1, 1, 'vertical', testShip); 
+    newGameboard.receiveAttack(1,1, testShip);
+    expect(testShip.timesHit).toBe(1);
+})

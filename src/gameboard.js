@@ -65,6 +65,18 @@ export class Gameboard{
              this.board[row][col] = ship;
            }
          return true;
+        }
 
+        receiveAttack(coord1, coord2, ship){
+            if(this.board[coord1][coord2] === 'hit' || 
+               this.board[coord1][coord2] === 'miss' ){
+                    return false; //cell already pressed or called on
+                };
+            if(this.board[coord1][coord2] !== null){
+                this.board[coord1][coord2] = 'hit';
+                ship.hit();
+            } else {
+                 this.board[coord1][coord2] = 'miss';
+            }
         }
     };

@@ -44,3 +44,11 @@ test('If ships collide, return false', () => {
     newGameboard.placeShip(1, 1, 'vertical', testShip);
     expect(newGameboard.placeShip(1, 1, 'vertical', newShip)).toBe(false);
 })
+
+//Testing ship placement
+test('Returns true if ship is placed correctly', () => {
+    const testShip = new Ship(2);
+    newGameboard.placeShip(1, 1, 'vertical', testShip);
+    expect(newGameboard.board[1][1]).toBe(testShip);
+    expect(newGameboard.board[2][1]).toBe(testShip);
+})

@@ -1,7 +1,7 @@
 import { Ship } from "./ship.js";
 
 export class Gameboard {
-  constructor(columns, rows) {
+  constructor(columns = 10, rows = 10) {
     this.columns = columns;
     this.rows = rows;
     this.numberOfShips = 0;

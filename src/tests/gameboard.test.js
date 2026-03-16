@@ -2,70 +2,98 @@ import { Ship } from "../ship.js";
 import { Gameboard } from "../gameboard.js";
 
 //Create a gameboard object
-test('Create a Gameboard obj', () => {
-    const newGameboard = new Gameboard(3,3);
-    expect(newGameboard.board).toEqual([
-        [null, null, null], 
-        [null, null, null], 
-        [null,null,null]
-    ]);
+test("Create a Gameboard obj", () => {
+  const newGameboard = new Gameboard(3, 3);
+  expect(newGameboard.board).toEqual([
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ]);
 });
 
 //Testing bounds
 let newGameboard;
 beforeEach(() => {
-    newGameboard = new Gameboard(4,4);
+  newGameboard = new Gameboard(4, 4);
 });
 
 test("Vertical ship out of bounds returns false", () => {
-    const testShip = new Ship(2);
-    expect(newGameboard.placeShip(3, 3, 'vertical', testShip)).toBe(false);
-})
+  const testShip = new Ship(2);
+  expect(newGameboard.placeShip(3, 3, "vertical", testShip)).toBe(false);
+});
 
 test("Vertical ship in bounds returns true", () => {
-    const testShip = new Ship(2);
-    expect(newGameboard.placeShip(1, 1, 'vertical', testShip)).toBe(true);
-})
+  const testShip = new Ship(2);
+  expect(newGameboard.placeShip(1, 1, "vertical", testShip)).toBe(true);
+});
 
 test("Horizontal ship out of bounds returns false", () => {
-    const testShip = new Ship(2);
-    expect(newGameboard.placeShip(3, 3, 'horizontal', testShip)).toBe(false);
-})
+  const testShip = new Ship(2);
+  expect(newGameboard.placeShip(3, 3, "horizontal", testShip)).toBe(false);
+});
 
 test("Horizontal ship in bounds returns true", () => {
-    const testShip = new Ship(2);
-    expect(newGameboard.placeShip(1, 1, 'horizontal', testShip)).toBe(true);
-})
+  const testShip = new Ship(2);
+  expect(newGameboard.placeShip(1, 1, "horizontal", testShip)).toBe(true);
+});
 
 //Testing ship overlap
-test('If ships collide, return false', () => {
-    const testShip = new Ship(2);
-    const newShip = new Ship(2,2)
-    newGameboard.placeShip(1, 1, 'vertical', testShip);
-    expect(newGameboard.placeShip(1, 1, 'vertical', newShip)).toBe(false);
-})
+test("If ships collide, return false", () => {
+  const testShip = new Ship(2);
+  const newShip = new Ship(2, 2);
+  newGameboard.placeShip(1, 1, "vertical", testShip);
+  expect(newGameboard.placeShip(1, 1, "vertical", newShip)).toBe(false);
+});
 
 //Testing ship placement
-test('Returns true if ship is placed correctly', () => {
-    const testShip = new Ship(2);
-    newGameboard.placeShip(1, 1, 'vertical', testShip);
-    expect(newGameboard.board[1][1]).toBe(testShip);
-    expect(newGameboard.board[2][1]).toBe(testShip);
-})
+test("Returns true if ship is placed correctly", () => {
+  const testShip = new Ship(2);
+  newGameboard.placeShip(1, 1, "vertical", testShip);
+  expect(newGameboard.board[1][1]).toBe(testShip);
+  expect(newGameboard.board[2][1]).toBe(testShip);
+});
 
 //Testing to see if a ship was hit
 //If hit, times counter must increase by 1
-test('Ship was hit', () => {
-    const testShip = new Ship(2);
-    newGameboard.placeShip(1, 1, 'vertical', testShip); 
-    newGameboard.receiveAttack(1,1, testShip);
-    expect(testShip.timesHit).toBe(1);
-})
+test("Ship was hit", () => {
+  const testShip = new Ship(2);
+  newGameboard.placeShip(1, 1, "vertical", testShip);
+  newGameboard.receiveAttack(1, 1, testShip);
+  expect(testShip.timesHit).toBe(1);
+});
 
-test('Attack missed the ship', () => {
-    const testShip = new Ship(2);
-    newGameboard.placeShip(1, 1, 'vertical', testShip); 
-    newGameboard.receiveAttack(1,1, testShip);
-    expect(testShip.timesHit).toBe(1);
-})
+test("Ship was not hit", () => {
+  const testShip = new Ship(2);
+  newGameboard.placeShip(1, 1, "vertical", testShip);
+  newGameboard.receiveAttack(3, 1, testShip);
+  expect(testShip.timesHit).toBe(0);
+});
+
+//Test if a cell recorded a hit or miss
+test("Return false if the cell has a hit or miss on it", () => {
+  const testShip = new Ship(2);
+  newGameboard.placeShip(1, 1, "vertical", testShip);
+  newGameboard.receiveAttack(1, 1, testShip);
+  expect(newGameboard.receiveAttack(1, 1, testShip)).toBe(false);
+});
+
+//test sunken ships
+test('No ships sunk', () => {
+    expect(newGameboard.sunkenShips).toBe(0);
+});
+
+test('1 ship sunk', () => {
+    const testShip = new Ship(1);
+    newGameboard.placeShip(1, 1, "vertical", testShip);
+    newGameboard.receiveAttack(1, 1, testShip);
+    expect(newGameboard.sunkenShips).toBe(1);
+});
+
+test('All ships sunk', () => {
+    const testShip = new Ship(1);
+    newGameboard.placeShip(1, 1, "vertical", testShip);
+    newGameboard.receiveAttack(1, 1, testShip);
+    expect(newGameboard.allShipsSunk).toBe(true);
+});
+
 

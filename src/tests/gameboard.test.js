@@ -61,3 +61,11 @@ test('Ship was hit', () => {
     newGameboard.receiveAttack(1,1, testShip);
     expect(testShip.timesHit).toBe(1);
 })
+
+test('Attack missed the ship', () => {
+    const testShip = new Ship(2);
+    newGameboard.placeShip(1, 1, 'vertical', testShip); 
+    newGameboard.receiveAttack(1,1, testShip);
+    expect(testShip.timesHit).toBe(1);
+})
+

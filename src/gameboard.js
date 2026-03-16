@@ -4,6 +4,7 @@ export class Gameboard{
     constructor(columns, rows){
         this.columns = columns;
         this.rows = rows;
+        this.sunkenShips = 0;
 
         //create an empty board
         this.board = [];
@@ -67,16 +68,19 @@ export class Gameboard{
          return true;
         }
 
-        receiveAttack(coord1, coord2, ship){
-            if(this.board[coord1][coord2] === 'hit' || 
-               this.board[coord1][coord2] === 'miss' ){
+        receiveAttack(row, column, ship){
+            if(this.board[row][column] === 'hit' || 
+               this.board[row][column2] === 'miss' ){
                     return false; //cell already pressed or called on
                 };
-            if(this.board[coord1][coord2] !== null){
-                this.board[coord1][coord2] = 'hit';
+            if(this.board[row][column] !== null){
+                this.board[row][column] = 'hit';
                 ship.hit();
+                if(ship.isSunk() === true){
+                    this.sunkenShips ++;
+                }
             } else {
-                 this.board[coord1][coord2] = 'miss';
+                 this.board[row][column] = 'miss';
             }
         }
     };

@@ -1,5 +1,7 @@
 /* style.css */
 
+
+
 /* 1. Use a more-intuitive box-sizing model Josh Comeau*/
 *, *::before, *::after {
   box-sizing: border-box;
@@ -49,6 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 
 body{
   
+  font-family: "Pixelify Sans";
   background-color: black;
   background-size: 150%;
   background-position: center;
@@ -66,7 +69,7 @@ body{
 h1{
     margin: 1rem;
     justify-self: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
     color:  limegreen;
 }
 

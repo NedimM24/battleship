@@ -26,6 +26,7 @@ export class Gameboard {
     const length = ship.length;
     //Checking bounds
     if (direction === "vertical" && x + length > this.rows) {
+      alert('OUT OF BOUNDS');
       return false;
     }
     if (direction === "horizontal" && y + length > this.columns) {
@@ -46,6 +47,7 @@ export class Gameboard {
       }
 
       if (this.board[row][col] !== null) {
+        alert('CANT PLACE SHIP HERE');
         return false;
       }
     }

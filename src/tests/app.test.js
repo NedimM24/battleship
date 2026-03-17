@@ -1,10 +1,13 @@
-import { Ship } from "./ship";
-import { Player } from "./player";
-import { Gameboard } from "./gameboard";
+
+import { startGame } from "../app.js";
+
+let testGame;
+beforeEach(() => {
+  testGame = startGame();
+});
 
 // For now just populate each player’s Gameboard with predetermined coordinates.
 test('Start new game, passes if a computer and real player are created', () => {
-    startGame();
-    expect(playerOne.playerType).toBe('real');
-    expect(playerTwo.playerType).toBe('computer');
+    expect(testGame.playerOne.playerType).toBe('real');
+    expect(testGame.playerTwo.playerType).toBe('computer');
 });

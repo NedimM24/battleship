@@ -71,6 +71,7 @@ h1{
     justify-self: center;
     font-size: 2.5rem;
     color:  limegreen;
+    
 }
 
 #container{
@@ -98,10 +99,11 @@ h1{
   width: 48vw;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
-  gap: 2px; 
+  gap: 1px; 
 }
 
 .player-cell,
 .computer-cell{
   border: 1px solid limegreen;
+  border-radius: 3px;
 }

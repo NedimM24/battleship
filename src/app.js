@@ -30,14 +30,14 @@ export function startGame(){
     //Player one
     playerOne.playerGameboard.placeShip(4, 4, 'vertical', playerOneShipOne);
     playerOne.playerGameboard.placeShip(3,0, 'vertical', playerOneShipTwo);
-    playerOne.playerGameboard.placeShip(9,0, 'horizonal', playerOneShipThree);
+    playerOne.playerGameboard.placeShip(9,0, 'horizontal', playerOneShipThree);
     playerOne.playerGameboard.placeShip(6,2, 'horizontal', playerOneShipFour);
     playerOne.playerGameboard.placeShip(0, 9, 'vertical', playerOneShipFive);
 
     //Player 2
     playerTwo.playerGameboard.placeShip(4, 4, 'vertical', playerTwoShipOne);
     playerTwo.playerGameboard.placeShip(3,0, 'vertical', playerTwoShipTwo);
-    playerTwo.playerGameboard.placeShip(9,0, 'horizonal', playerTwoShipThree);
+    playerTwo.playerGameboard.placeShip(9,0, 'horizontal', playerTwoShipThree);
     playerTwo.playerGameboard.placeShip(6,2, 'horizontal', playerTwoShipFour);
     playerTwo.playerGameboard.placeShip(0, 9, 'vertical', playerTwoShipFive);
 

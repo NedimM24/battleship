@@ -27,8 +27,39 @@ export function display(playerOne, playerTwo){
                 return;
             }
             playerTurn = false;
+
+                // Computers attack now
+                setTimeout(() => {
+                computerAttack();
+                render(playerOne, playerTwo);
+
+                if(playerOne.playerGameboard.allShipsSunk){
+                    alert("game over. Computer wins");
+                    return;
+                }
+                playerTurn = true;
+
+            }, 800);
+
+
+        })
+
+        function computerAttack(){
+            const availableCell = [];
+            for(let i = 0; i < 10; i++){
+                for(let j = 0; j < 10; j++){
+                    const cell = playerOne.playerGameboard.board[i][j];
+                    if(cell !== 'hit' && cell !== 'miss'){
+                        availableCell.push({row: i, col: j})
+                    }
+                }
+            }
+
+            const computerAttack = availableCell[Math.floor(Math.random() * availableCell.length)];
+            const targetShip = playerOne.playerGameboard.board[computerAttack.row][computerAttack.col];
+            playerOne.playerGameboard.receiveAttack(computerAttack.row, computerAttack.col, targetShip);           
+
         }
-)
 
 }
 

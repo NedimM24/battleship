@@ -26,7 +26,7 @@ export class Gameboard {
     const length = ship.length;
     //Checking bounds
     if (direction === "vertical" && x + length > this.rows) {
-      alert('OUT OF BOUNDS');
+      alert("OUT OF BOUNDS");
       return false;
     }
     if (direction === "horizontal" && y + length > this.columns) {
@@ -47,7 +47,7 @@ export class Gameboard {
       }
 
       if (this.board[row][col] !== null) {
-        alert('CANT PLACE SHIP HERE');
+        alert("CANT PLACE SHIP HERE");
         return false;
       }
     }
@@ -67,25 +67,29 @@ export class Gameboard {
         col = y + i;
       }
       this.board[row][col] = ship;
-      this.numberOfShips++;
     }
+    this.numberOfShips++;
     return true;
   }
 
-  receiveAttack(row, column, ship) {
-    if (
-      this.board[row][column] === "hit" ||
-      this.board[row][column] === "miss"
-    ) {
-      return false; //cell already pressed or called on
+  receiveAttack(row, column) {
+    const cell = this.board[row][column];
+
+    //check if cell has been clicked
+    if (cell === "hit" || cell === "miss") {
+      return false;
     }
-    if (this.board[row][column] !== null) {
+
+    if (cell instanceof Ship) {
+      cell.hit();
       this.board[row][column] = "hit";
-      ship.hit();
-      if (ship.isSunk() === true) {
+
+      //check if ship is sunk
+      if (cell.isSunk()) {
         this.sunkenShips++;
-        if(this.numberOfShips === this.sunkenShips){
-            this.allShipsSunk = true;
+
+        if (this.numberOfShips === this.sunkenShips) {
+          this.allShipsSunk = true;
         }
       }
     } else {

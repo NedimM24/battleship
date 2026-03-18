@@ -78,22 +78,20 @@ test("Return false if the cell has a hit or miss on it", () => {
 });
 
 //test sunken ships
-test('No ships sunk', () => {
-    expect(newGameboard.sunkenShips).toBe(0);
+test("No ships sunk", () => {
+  expect(newGameboard.sunkenShips).toBe(0);
 });
 
-test('1 ship sunk', () => {
-    const testShip = new Ship(1);
-    newGameboard.placeShip(1, 1, "vertical", testShip);
-    newGameboard.receiveAttack(1, 1, testShip);
-    expect(newGameboard.sunkenShips).toBe(1);
+test("1 ship sunk", () => {
+  const testShip = new Ship(1);
+  newGameboard.placeShip(1, 1, "vertical", testShip);
+  newGameboard.receiveAttack(1, 1, testShip);
+  expect(newGameboard.sunkenShips).toBe(1);
 });
 
-test('All ships sunk', () => {
-    const testShip = new Ship(1);
-    newGameboard.placeShip(1, 1, "vertical", testShip);
-    newGameboard.receiveAttack(1, 1, testShip);
-    expect(newGameboard.allShipsSunk).toBe(true);
+test("All ships sunk", () => {
+  const testShip = new Ship(1);
+  newGameboard.placeShip(1, 1, "vertical", testShip);
+  newGameboard.receiveAttack(1, 1, testShip);
+  expect(newGameboard.allShipsSunk).toBe(true);
 });
-
-

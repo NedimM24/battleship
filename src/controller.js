@@ -1,3 +1,4 @@
+import { startGame } from "./app.js";
 import { render } from "./view.js";
 
 export function display(playerOne, playerTwo){
@@ -7,7 +8,6 @@ export function display(playerOne, playerTwo){
     //Playerboard dynamic click w event delegation
     const playerBoard = document.querySelector('.player-board');
 
-   
     //computer board dynamic click w event delegation
     const computerBoard = document.querySelector('.computer-board');
     computerBoard.addEventListener("click", (e) => {
@@ -16,14 +16,11 @@ export function display(playerOne, playerTwo){
             const row = Number(e.target.dataset.row);
             const col = Number(e.target.dataset.col)
 
-            const shipAtCell = playerTwo.playerGameboard.board[row][col];
-
-            playerTwo.playerGameboard.receiveAttack(row, col, shipAtCell);
-
+            playerTwo.playerGameboard.receiveAttack(row, col);
             render(playerOne, playerTwo);
 
             if(playerTwo.playerGameboard.allShipsSunk){
-                alert("game over");
+                alert("Game over. You win");
                 return;
             }
             playerTurn = false;
@@ -34,14 +31,12 @@ export function display(playerOne, playerTwo){
                 render(playerOne, playerTwo);
 
                 if(playerOne.playerGameboard.allShipsSunk){
-                    alert("game over. Computer wins");
+                    alert("Game over. Computer wins");
                     return;
                 }
                 playerTurn = true;
 
             }, 800);
-
-
         })
 
         function computerAttack(){
@@ -56,10 +51,19 @@ export function display(playerOne, playerTwo){
             }
 
             const computerAttack = availableCell[Math.floor(Math.random() * availableCell.length)];
-            const targetShip = playerOne.playerGameboard.board[computerAttack.row][computerAttack.col];
-            playerOne.playerGameboard.receiveAttack(computerAttack.row, computerAttack.col, targetShip);           
+            
+            playerOne.playerGameboard.receiveAttack(computerAttack.row, computerAttack.col);           
 
         }
 
+}
+//START A FRESH GAME
+export function resetGame(){
+    const resetBtn = document.querySelector('.reset-btn');
+    resetBtn.addEventListener('click', () => {
+        const {playerOne, playerTwo} = startGame();
+        display(playerOne, playerTwo);
+        
+    })
 }
 

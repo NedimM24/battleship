@@ -1,9 +1,9 @@
 /* style.css */
 
-
-
 /* 1. Use a more-intuitive box-sizing model Josh Comeau*/
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 /* 2. Remove default margin */
@@ -23,92 +23,109 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 /* 6. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 /* 7. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 /* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 /* 9. Improve line wrapping */
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 /*
   10. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
-body{
-  
+body {
   font-family: "Pixelify Sans";
   background-color: black;
   background-size: 150%;
   background-position: center;
 }
-  
 
 .player-title,
-.computer-title{
+.computer-title {
   color: limegreen;
   justify-self: center;
   font-size: x-large;
   font-weight: bolder;
 }
 
-h1{
-    margin: 1rem;
-    justify-self: center;
-    font-size: 2.5rem;
-    color:  limegreen;
-    
+h1 {
+  margin: 1rem;
+  justify-self: center;
+  font-size: 2.5rem;
+  color: limegreen;
 }
 
-#container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.computer-board{
-    grid-column-start: 2;
-    grid-column-end: 3;
+.computer-board {
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .left,
-.right{
-    padding-top: 1rem;
-    justify-self: center;
+.right {
+  padding-top: 1rem;
+  justify-self: center;
 }
 
 .player-board,
-.computer-board{
-  display: grid; 
+.computer-board {
+  display: grid;
   border: solid 3px limegreen;
   background-color: rgb(214, 207, 207);
   height: 60vh;
   width: 48vw;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
-  gap: 1px; 
+  gap: 1px;
 }
 
 .player-cell,
-.computer-cell{
+.computer-cell {
   border: 1px solid limegreen;
   border-radius: 3px;
+  cursor: pointer;   
 }
 
-.player-board .ship{
+.player-board .ship {
   background-color: limegreen;
 }
 
@@ -116,10 +133,27 @@ h1{
   background-color: orange;
 }
 
-.hit{
+.hit {
   background-color: red;
 }
 
-.miss{
+.miss {
   background-color: green;
+}
+
+.reset-btn {
+  display: flex;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  align-self: center;
+  justify-self: center;
+  cursor: pointer;   
+}
+
+.player-title p.refresh-btn {
+  display: inline;  
+  margin-left: 10px; 
+  cursor: pointer;   
 }

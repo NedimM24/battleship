@@ -5,5 +5,5 @@ import { render } from "./view.js";
 import { display } from "./controller.js";
 
 
-startGame();
-display();
+const {playerOne, playerTwo} = startGame();
+display(playerOne, playerTwo);

@@ -1,36 +1,41 @@
-export function render(){
-
-    //render the player board first
+import { Ship } from "./ship";
+export function render(playerOne, playerTwo){
     const playerBoard = document.querySelector(".player-board");
-    for(let i = 0; i <100; i++){
-        let playerCell = document.createElement('div');
-        playerCell.classList.add('player-cell');
-
-        //Need to add cell positions
-        const row = Math.floor(i / 10);
-        const col = i % 10;
-
-        playerCell.dataset.row = row;
-        playerCell.dataset.col = col;
-
-        playerBoard.appendChild(playerCell)
-        };
-
-    //Render the computer board. 10 x 10 grid
     const computerBoard = document.querySelector(".computer-board");
-    for(let i = 0; i <100; i++){
-        let computerCell = document.createElement('div');
-        computerCell.classList.add('computer-cell');
 
-        //Need to add cell positions
-        const row = Math.floor(i / 10);
-        const col = i % 10;
+    playerBoard.innerHTML = "";
+    computerBoard.innerHTML = "";
 
-        computerCell.dataset.row = row;
-        computerCell.dataset.col = col;
-
-        computerBoard.appendChild(computerCell)
-        };
-
+    renderBoard(playerBoard, playerOne.playerGameboard, true);
+    renderBoard(computerBoard, playerTwo.playerGameboard, false);
     
 }
+
+function renderBoard(boardElement, gameBoard, showShips){
+    //render the player board first
+    
+    for(let i = 0; i <100; i++){
+        const cell = document.createElement('div');
+
+        //Need to add cell positions
+        const row = Math.floor(i / 10);
+        const col = i % 10;
+
+        cell.dataset.row = row;
+        cell.dataset.col = col;
+
+        cell.classList.add(boardElement.classList.contains('player-board') ? 'player-cell' : 'computer-cell')
+
+        const boardValue = gameBoard.board[row][col];
+        if(showShips && boardValue instanceof Ship){
+            cell.classList.add('ship');
+        }
+
+        if(boardValue === 'hit'){
+            cell.classList.add('hit')
+        } else if (boardValue === 'miss'){
+            cell.classList.add('miss');
+        }
+        boardElement.appendChild(cell);
+     }
+};

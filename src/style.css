@@ -107,3 +107,19 @@ h1{
   border: 1px solid limegreen;
   border-radius: 3px;
 }
+
+.player-board .ship{
+  background-color: limegreen;
+}
+
+.computer-board .ship {
+  background-color: orange;
+}
+
+.hit{
+  background-color: red;
+}
+
+.miss{
+  background-color: green;
+}

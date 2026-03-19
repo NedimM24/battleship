@@ -5,12 +5,12 @@ export function display(playerOne, playerTwo){
     let playerTurn = true;
     render(playerOne, playerTwo);
 
-    //Playerboard dynamic click w event delegation
-    const playerBoard = document.querySelector('.player-board');
-
     //computer board dynamic click w event delegation
     const computerBoard = document.querySelector('.computer-board');
-    computerBoard.addEventListener("click", (e) => {
+    const newBoard = computerBoard.cloneNode(true);
+    computerBoard.replaceWith(newBoard);
+
+    newBoard.addEventListener("click", (e) => {
         if(!playerTurn) return;
         if(!e.target.classList.contains("computer-cell")) return; 
             const row = Number(e.target.dataset.row);
@@ -20,7 +20,7 @@ export function display(playerOne, playerTwo){
             render(playerOne, playerTwo);
 
             if(playerTwo.playerGameboard.allShipsSunk){
-                alert("Game over. You win");
+                alert("Game over. You win. Click the reset button if you wish to keep playing");
                 return;
             }
             playerTurn = false;
@@ -31,7 +31,7 @@ export function display(playerOne, playerTwo){
                 render(playerOne, playerTwo);
 
                 if(playerOne.playerGameboard.allShipsSunk){
-                    alert("Game over. Computer wins");
+                    alert("Game over. Computer wins. Click the reset button if you wish to keep playing");
                     return;
                 }
                 playerTurn = true;
@@ -56,14 +56,5 @@ export function display(playerOne, playerTwo){
 
         }
 
-}
-//START A FRESH GAME
-export function resetGame(){
-    const resetBtn = document.querySelector('.reset-btn');
-    resetBtn.addEventListener('click', () => {
-        const {playerOne, playerTwo} = startGame();
-        display(playerOne, playerTwo);
-        
-    })
 }
 

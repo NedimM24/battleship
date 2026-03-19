@@ -2,6 +2,9 @@ Battleship 🎛 ⚓ 🗺️
 
 A modern, web‑based version of the classic **Battleship** game. Play against the computer with randomly placed ships, track hits and misses, and sink all enemy ships to win!
 
+<img width="1485" height="1068" alt="image" src="https://github.com/user-attachments/assets/84e2e08a-fb35-4e29-8a5e-6b24a4b72135" />
+
+
 ---
 
 ## **Live Demo**

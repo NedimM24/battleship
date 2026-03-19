@@ -1,41 +1,59 @@
-# Webpack-ESLint-Prettier-Template
+Battleship 🎛 ⚓ 🗺️
 
-- ESLint
-  My ESLint is not configured for react or vue.js
+A modern, web‑based version of the classic Battleship game. Play against the computer with randomly placed ships, track hits and misses, and sink all enemy ships to win!
 
-You can run ESLint on any file or directory like this:
-npx eslint yourfile.js
+Live Demo
 
-Rules
-{
-rules: {
-"no-unused-vars": "warn",
-"no-undef": "warn",
-},
-},
+👉 Play it online: https://nedimm24.github.io/battleship/
 
-- Prettier
-  First install locally
-  npm install --save-dev --save-exact prettier
+Features
 
-Next create an empty config file. Lets editor and other tools know that you're using Prettier.
-node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+Two Players: Real player vs. computer AI
 
-Next create .prettierignore file. Let's editors know what files not to format.
-node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
+Dynamic Gameboards: 10×10 grids for both players
 
-- Using Prettier
-  const badCode="yuck! //Save
+Random Ship Placement: Ships placed without overlap or out‑of‑bounds errors
 
-npx prettier . --write
-const badCode = "yuck!"; //Prettier format
+Attack Tracking: Visual feedback for hits, misses, and sunk ships
 
-If you have a CI setup, run the following as part of it to make sure that everyone runs Prettier. This avoids merge conflicts and other collaboration issues!
+Reset Functionality: Start a new game or reshuffle ships instantly
 
-npx prettier . --check
+Responsive UI: Interactive grid with color‑coded results
 
---check is like --write, but only checks that files are already formatted, rather than overwriting them. prettier --write and prettier --check are the most common ways to run Prettier.
+Unit Tested: Core game logic tested with Jest
 
-ESLint. (n.d.). Getting started. ESLint. Retrieved January 30, 2026, from https://eslint.org/docs/latest/use/getting-started
+Installation & Usage
 
-Prettier. (n.d.). Installation. Prettier. Retrieved January 30, 2026, from https://prettier.io/docs/install.html
+Clone the repository:
+
+git clone <repo_url>
+
+Open index.html in your browser — the game begins immediately.
+
+Click RESET GAME & SHIP POSITIONS to start a new game or reshuffle ships.
+
+Click on the enemy board to attack cells.
+
+What I Learned
+
+Game Logic Design: Structured turn‑based combat with ships, hits, misses, and win conditions.
+
+Object‑Oriented JavaScript: Designed reusable Ship, Gameboard, and Player classes.
+
+DOM Manipulation: Dynamically rendered game boards and updated cell states.
+
+Testing: Verified game rules with Jest unit tests.
+
+Randomized Algorithms: Built placement logic that avoids collisions and stays within bounds.
+
+UI/UX Design: Created an interactive grid with clear visual feedback.
+
+Roadblocks
+
+Random Ship Placement: Preventing overlap and out‑of‑bounds placements took careful logic.
+
+Tracking Game State: Managing hits/misses while maintaining accurate board state.
+
+DOM Syncing Challenges: Making sure UI updates reliably without breaking interactivity.
+
+Edge Case Testing: Handling repeated attacks on the same cell and sinking ships required thorough Jest coverage.

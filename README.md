@@ -10,6 +10,10 @@ A modern, web‑based version of the classic **Battleship** game. Play against t
 ## **Live Demo**
 
 Play it online: [https://nedimm24.github.io/battleship/](https://nedimm24.github.io/battleship/)
+<img width="1482" height="1029" alt="image" src="https://github.com/user-attachments/assets/3ae3d02e-e0b4-4c9f-9f92-ee780ab55c69" />
+<img width="1488" height="1148" alt="image" src="https://github.com/user-attachments/assets/cd590931-1a6e-4031-9ae2-0097e85d597e" />
+
+
 
 ---
 

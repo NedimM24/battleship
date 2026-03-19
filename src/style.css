@@ -152,8 +152,3 @@ h1 {
   cursor: pointer;   
 }
 
-.player-title p.refresh-btn {
-  display: inline;  
-  margin-left: 10px; 
-  cursor: pointer;   
-}
